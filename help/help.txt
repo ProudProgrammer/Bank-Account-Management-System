@@ -1,0 +1,15 @@
+Általános leírás
+A feladat célja, egy leegyszerûsített banki számlavezetõ rendszer elkészítése. A program felhasználói alapvetõen a banki ügyintézõk, akik az ügyfelek számláit megnyitják, lezárják, azokon tranzakciókat végeznek. Különbözõ pénznemeket nem kell kezelnie a rendszernek. Feltételezzük, hogy csak forint számlákat vezet a bank.
+Felhasználási esetek
+Ügyfelek nyilvántartása
+Az ügyintézõnek lehetõsége van új ügyfeleket létrehozni, meglévõ ügyfeleit módosítani, esetleg törölni. A létrehozásnál a következõ adatokat kell bekérni: név, lakcím, telefonszám, személyigazolvány szám. A rendszer automatikusan generál egy 6 jegyû ügyfélszámot a létrehozott ügyfélhez. Módosítás esetén az ügyintézõnek lehetõsége van több szempont alapján keresni az ügyfélre (ügyfélszám, szig. szám, név). Amennyiben több ügyfelet talál a rendszer listából választhat az ügyintézõ melyikkel akar dolgozni. Az ügyfél szám kivételével minden adat módosítható. A törlés nem fizikai törléssel jár, hanem csak státusz módosítással. A töröl státuszú ügyfeleket le lehet kérdezni, de módosítani már a továbbiakban nem lehet.
+Számlakezelés
+Az aktív ügyfelekhez lehet számla számokat nyitni. A számlaszám nyitáskor a rendszer legenerálja a számlaszámot, ami formátuma: <ügyfélkód>+<4 jegyû sequence>. A 4 jegyû sequencenek egyedinek kell lennie egy ügyfélre nézve. Nyitáskor meg lehet adni a számla kezdõ egyenlegét, ami kezdeti befizetésként jelenik meg. A számlaszámoknak egyik jellemzõje az egyenlegük, hogy éppen mekkora összeg van rajta. Másik, hogy minden az egyenlegben történt módosításról egy adatbázis bejegyzés születik, amin végig lehet követni a számlát érintõ tranzakciókat. Egy tranzakcióról tudnia kell a rendszernek, hogy: melyik számlán történt, mekkora összegben (elõjellel), egy tetszõleges leírás, dátum, illetve a másik számla, ahonnan a pénzjött, amennyiben volt ilyen. A rendszernek lehetõséget kell adnia, hogy egy ügyfélnek a számláit kilistázza a hozzátartozó egyenlegekkel együtt. A számlákat le lehet zárni (státusz váltás). Ebben az esetben az egyenleg pénztári ki fizetéssel egybekötve lenullázódik. A számlák egyenlege nem mehet negatívba. (Folyószámlahitel nincs.)
+Átutalások
+Ezen a funkción keresztül az ügyintézõ kijelölhet két számlaszámot, amit a banknál vezetnek, és nincs lezárva (forrás illetve cél számlát), és meghatározhatja az átutalás összegét, és egy megjegyzést fûzhet az átutaláshoz. A rendszer az adott összeget azonnal átvezeti, amennyiben a megfelelõ egyenleg rendelkezésre áll a célszámlán.
+Pénztári befizetés
+Ezen a funkción keresztül lehet növelni a számla egyenlegét tetszõleges összeggel.
+Pénztári kifizetés
+Itt a számlán rendelkezésre álló pénzt lehet kivenni, ezzel csökkentve a rendelkezésre álló egyenleget. Több pénzt nem lehet kivenni, mint amennyi a számlán van.
+Jelentések
+Itt lehetõség van számlán történt tranzakciók lekérdezésére. Az ügyintézõ szûrhet számlaszámra, összegre, illetve dátum tartományra is.
